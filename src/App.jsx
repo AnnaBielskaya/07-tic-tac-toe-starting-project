@@ -7,10 +7,15 @@ import { checkWinner, deriveActivePlayer, getBoard } from "./utils/gamelogic";
 import GameOver from "./components/GameOver";
 
 function App() {
+  const [players, setPlayers] = useState({
+    X: "Player 1",
+    O: "Player 2",
+  });
+
   const [gameTurns, setGameTurns] = useState([]);
   const currentPlayer = deriveActivePlayer(gameTurns);
   const board = getBoard(gameTurns);
-  const winner = checkWinner(board);
+  const winner = players[checkWinner(board)];
   const draw = gameTurns.length === 9 && !winner;
 
   const handleSelectSquare = (row, col) => {
@@ -34,6 +39,12 @@ function App() {
     setGameTurns([]);
   };
 
+  const handlePlaerNameChange = (symbol, name) => {
+    setPlayers((prevState) => {
+      return { ...prevState, [symbol]: name };
+    });
+  };
+
   return (
     <main>
       <div id="game-container">
@@ -42,11 +53,13 @@ function App() {
             initialName="Player 1"
             symbol="X"
             isActive={currentPlayer === "X"}
+            onChangeName={handlePlaerNameChange}
           />
           <Player
             initialName="Player 2"
             symbol="O"
             isActive={currentPlayer === "O"}
+            onChangeName={handlePlaerNameChange}
           />
         </ol>
         {winner && <GameOver winner={winner} onRestart={handleRestart} />}
