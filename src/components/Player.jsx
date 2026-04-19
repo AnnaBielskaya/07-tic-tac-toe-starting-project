@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const Player = ({ initialName, symbol, isActive }) => {
   const [name, setName] = useState(initialName);

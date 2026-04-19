@@ -24,3 +24,21 @@ export const getBoard = (turns) => {
 
   return gameBoard;
 };
+
+export const checkWinner = (board) => {
+  for (const combination of WINNING_COMBINATIONS) {
+    const firstWinningSymbol = board[combination[0].row][combination[0].column];
+    const secondWinningSymbol =
+      board[combination[1].row][combination[1].column];
+    const thirdWinningSymbol = board[combination[2].row][combination[2].column];
+
+    if (
+      firstWinningSymbol !== null &&
+      firstWinningSymbol === secondWinningSymbol &&
+      firstWinningSymbol === thirdWinningSymbol
+    )
+      return firstWinningSymbol;
+  }
+
+  return null;
+};

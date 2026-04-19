@@ -3,13 +3,13 @@ import GameBoard from "./components/GameBoard";
 import Player from "./components/Player";
 import Log from "./components/Log";
 
-import { deriveActivePlayer, getBoard } from "./utils/gamelogic";
+import { checkWinner, deriveActivePlayer, getBoard } from "./utils/gamelogic";
 
 function App() {
   const [gameTurns, setGameTurns] = useState([]);
-  //const [winner, setWinner] = useState(null);
   const currentPlayer = deriveActivePlayer(gameTurns);
   const board = getBoard(gameTurns);
+  const winner = checkWinner(board);
 
   const handleSelectSquare = (row, col) => {
     setGameTurns((prevTurns) => {
@@ -43,6 +43,7 @@ function App() {
             isActive={currentPlayer === "O"}
           />
         </ol>
+        {winner && <p>{winner} you won!</p>}
         <GameBoard onsSelectSquare={handleSelectSquare} board={board} />
       </div>
       <Log gameTurns={gameTurns} />
