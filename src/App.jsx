@@ -3,14 +3,12 @@ import GameBoard from "./components/GameBoard";
 import Player from "./components/Player";
 import Log from "./components/Log";
 
+import { INITIAL_PLAYERS } from "./constants/players";
 import { checkWinner, deriveActivePlayer, getBoard } from "./utils/gamelogic";
 import GameOver from "./components/GameOver";
 
 function App() {
-  const [players, setPlayers] = useState({
-    X: "Player 1",
-    O: "Player 2",
-  });
+  const [players, setPlayers] = useState(INITIAL_PLAYERS);
 
   const [gameTurns, setGameTurns] = useState([]);
   const currentPlayer = deriveActivePlayer(gameTurns);
