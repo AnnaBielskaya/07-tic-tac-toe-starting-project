@@ -1,5 +1,3 @@
-import React from "react";
-
 const Log = ({ gameTurns }) => {
   return (
     <ol id="log">
