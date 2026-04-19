@@ -4,6 +4,7 @@ import Player from "./components/Player";
 import Log from "./components/Log";
 
 import { checkWinner, deriveActivePlayer, getBoard } from "./utils/gamelogic";
+import GameOver from "./components/GameOver";
 
 function App() {
   const [gameTurns, setGameTurns] = useState([]);
@@ -43,7 +44,7 @@ function App() {
             isActive={currentPlayer === "O"}
           />
         </ol>
-        {winner && <p>{winner} you won!</p>}
+        {winner && <GameOver winner={winner} />}
         <GameBoard onsSelectSquare={handleSelectSquare} board={board} />
       </div>
       <Log gameTurns={gameTurns} />
