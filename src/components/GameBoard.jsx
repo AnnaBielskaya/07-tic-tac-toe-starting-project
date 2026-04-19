@@ -14,7 +14,7 @@ const GameBoard = ({ onsSelectSquare, symbol }) => {
       const updatedBoard = [...gameboard.map((innerArray) => [...innerArray])];
       updatedBoard[rowIndex][colIndex] = symbol;
       setGameboard(updatedBoard);
-      onsSelectSquare();
+      onsSelectSquare(rowIndex, colIndex);
     }
   };
 
