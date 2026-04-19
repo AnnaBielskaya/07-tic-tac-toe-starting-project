@@ -1,22 +1,7 @@
-const initialGameBoard = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
-
-const GameBoard = ({ onsSelectSquare, turns }) => {
-  let gameBoard = [...initialGameBoard.map((array) => [...array])];
-
-  for (const turn of turns) {
-    const { square, player } = turn;
-    const { row, col } = square;
-
-    gameBoard[row][col] = player;
-  }
-
+const GameBoard = ({ onsSelectSquare, board }) => {
   return (
     <div id="game-board">
-      {gameBoard.map((row, rowIndex) => (
+      {board.map((row, rowIndex) => (
         <div key={rowIndex}>
           <ol>
             {row.map((col, colIndex) => {
