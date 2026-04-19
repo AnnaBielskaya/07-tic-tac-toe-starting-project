@@ -6,7 +6,7 @@ const Log = ({ gameTurns }) => {
       {gameTurns.map((turn) => {
         return (
           <p key={`${turn.player}-${turn.square.row}-${turn.square.col}`}>
-            {turn.player}-{turn.square.row}-{turn.square.col}
+            {turn.player} selected {turn.square.row}-{turn.square.col}
           </p>
         );
       })}
